@@ -1,0 +1,2 @@
+module RedDaysHelper
+end

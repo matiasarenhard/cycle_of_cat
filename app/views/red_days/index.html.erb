@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Red Days</h1>
+
+<table class="custom-table">
+  <thead>
+    <tr>
+      <th>Good day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @red_days.each do |red_day| %>
+      <tr>
+        <td><%= red_day.good_day %></td>
+        <td><button type="button" class="btn btn-default"><%= link_to 'show', red_day %> <i class="fa fa-eye"></i> </button></td>
+        <td><button type="button" class="btn btn-default"><%= link_to 'edit', edit_red_day_path(red_day) %> <i class="fa fa-edit"></i> </button></td>
+        <td><button type="button" class="btn btn-default"><%= link_to 'destroy', red_day, method: :delete, data: { confirm: 'Are you sure?' }  %> <i class="fa fa-trash"></i> </button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button type="button" class="btn btn-success"><%= link_to 'New Red Day', new_red_day_path %> <i class="fa fa-heart"></i> </button>

@@ -1,0 +1,675 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRedDays (20180421121732)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "red_days" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "good_day" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180421121732"]]
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-21 12:17:43.161540"], ["updated_at", "2018-04-21 12:17:43.161540"]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-04-21 09:17:55 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (3.1ms)
+Completed 200 OK in 13ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/goodday" for 127.0.0.1 at 2018-04-21 09:18:05 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/goodday"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.1) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.1) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.1) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/red_days" for 127.0.0.1 at 2018-04-21 09:18:12 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 550ms (Views: 546.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/red_days/new" for 127.0.0.1 at 2018-04-21 09:18:19 -0300
+Processing by RedDaysController#new as HTML
+  Rendering red_days/new.html.erb within layouts/application
+  Rendered red_days/_form.html.erb (13.1ms)
+  Rendered red_days/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 47ms (Views: 39.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/red_days" for 127.0.0.1 at 2018-04-21 09:18:22 -0300
+Processing by RedDaysController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LkeU33zfI65QA8/V2iBn7lnF8OnUGl4gkyhZ+NlkQXgv+281gfSXPTgjVLOmXPj4oC7TA3VBMpzCGsmquJz50Q==", "red_day"=>{"good_day(1i)"=>"2018", "good_day(2i)"=>"4", "good_day(3i)"=>"21"}, "commit"=>"Create Red day"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "red_days" ("good_day", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["good_day", "2018-04-21"], ["created_at", "2018-04-21 12:18:22.152342"], ["updated_at", "2018-04-21 12:18:22.152342"]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/red_days/1
+Completed 302 Found in 14ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/red_days/1" for 127.0.0.1 at 2018-04-21 09:18:22 -0300
+Processing by RedDaysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT  "red_days".* FROM "red_days" WHERE "red_days"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering red_days/show.html.erb within layouts/application
+  Rendered red_days/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 26ms (Views: 21.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/red_days" for 127.0.0.1 at 2018-04-21 09:18:23 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 35ms (Views: 30.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 09:21:46 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 174ms (Views: 164.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:33:29 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (7.2ms)
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:33:30 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 7526ms (Views: 7523.6ms | ActiveRecord: 0.5ms)
+
+
+Completed 200 OK in 8095ms (Views: 8085.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:34:31 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 39ms (Views: 37.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/red_days/new" for 127.0.0.1 at 2018-04-21 10:34:32 -0300
+Processing by RedDaysController#new as HTML
+  Rendering red_days/new.html.erb within layouts/application
+  Rendered red_days/_form.html.erb (22.2ms)
+  Rendered red_days/new.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 59ms (Views: 57.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:35:39 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.3ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 1803ms (Views: 1801.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:36:29 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 1849ms (Views: 1847.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:38:23 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.4ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 1856ms (Views: 1851.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:41:24 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 1881ms (Views: 1879.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:35 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.4ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 48ms (Views: 46.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:39 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:40 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 43ms (Views: 40.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:40 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 61ms (Views: 59.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:49 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.3ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 39ms (Views: 37.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:51 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 40ms (Views: 39.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:52 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 41ms (Views: 39.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:52 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 43ms (Views: 41.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:44:52 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.4ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 53ms (Views: 50.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:45:09 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:46:42 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 61ms (Views: 59.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:46:44 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:46:44 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 35ms (Views: 33.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:46:44 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 43ms (Views: 41.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:48:52 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 5174ms (Views: 5165.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:51:47 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 47ms (Views: 46.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:54:54 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 628ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: font-awesome-compass.
+Load paths:
+  /home/matiasnote/cycle_of_cat/app/assets/config
+  /home/matiasnote/cycle_of_cat/app/assets/images
+  /home/matiasnote/cycle_of_cat/app/assets/javascripts
+  /home/matiasnote/cycle_of_cat/app/assets/stylesheets
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/font-awesome-rails-4.7.0.2/app/assets/fonts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/font-awesome-rails-4.7.0.2/app/assets/stylesheets
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/jquery-rails-4.3.3/vendor/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/actioncable-5.1.6/lib/assets/compiled
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/actionview-5.1.6/lib/assets/compiled
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/turbolinks-source-5.1.0/lib/assets/javascripts
+  /home/matiasnote/cycle_of_cat/node_modules
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/popper_js-1.12.9/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/bootstrap-4.1.0/assets/stylesheets
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/bootstrap-4.1.0/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/bootstrap-4.1.0/assets/stylesheets):
+    4:     <title>CycleOfCat</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   10:   </head>
+  
+app/assets/stylesheets/application.scss:19
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__2062758627649394052_70101095240200'
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:56:06 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.4ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (7.8ms)
+Completed 500 Internal Server Error in 147ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'font-awesome' with type 'text/css'
+Checked in these paths: 
+  /home/matiasnote/cycle_of_cat/app/assets/config
+  /home/matiasnote/cycle_of_cat/app/assets/images
+  /home/matiasnote/cycle_of_cat/app/assets/javascripts
+  /home/matiasnote/cycle_of_cat/app/assets/stylesheets
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/jquery-rails-4.3.3/vendor/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/actioncable-5.1.6/lib/assets/compiled
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/actionview-5.1.6/lib/assets/compiled
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/turbolinks-source-5.1.0/lib/assets/javascripts
+  /home/matiasnote/cycle_of_cat/node_modules
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/popper_js-1.12.9/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/bootstrap-4.1.0/assets/stylesheets
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/bootstrap-4.1.0/assets/javascripts
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/font-awesome-sass-5.0.9/assets/stylesheets
+  /home/matiasnote/.rvm/gems/ruby-2.3.0/gems/font-awesome-sass-5.0.9/assets/fonts):
+    4:     <title>CycleOfCat</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   10:   </head>
+  
+app/assets/stylesheets/application.scss:15
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__981743706900492302_27262020'
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:56:32 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (6.7ms)
+Completed 500 Internal Server Error in 924ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (2 for 1) for `font-url'):
+    4:     <title>CycleOfCat</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   10:   </head>
+  
+app/assets/stylesheets/application.scss:19
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__3618230109594693313_38102480'
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:57:34 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 3138ms (Views: 3129.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 10:58:10 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 41ms (Views: 40.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:01:54 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.4ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 58ms (Views: 56.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:02:32 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.3ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 2462ms (Views: 2461.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:02:47 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 2219ms (Views: 2217.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:04:15 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 46ms (Views: 43.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:04:46 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 42ms (Views: 40.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:05:01 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:07:56 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:08:17 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.3ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:10:21 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (14.9ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"red_days"}, missing required keys: [:id]):
+    15:       <tr>
+    16:         <td><%= red_day.good_day %></td>
+    17:         <td><%= link_to 'Show', red_day %></td>
+    18:         <td><%= link_to edit_red_day_path, class: "btn btn-default" do %>
+    19:             <i class="fa fa-edit"></i> Dashboard
+    20:         <% end %>
+    21:         </td>
+  
+app/views/red_days/index.html.erb:18:in `block in _app_views_red_days_index_html_erb___8839209293343691_70324351549220'
+app/views/red_days/index.html.erb:14:in `_app_views_red_days_index_html_erb___8839209293343691_70324351549220'
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:10:42 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.3ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"red_days"}, missing required keys: [:id]):
+    15:       <tr>
+    16:         <td><%= red_day.good_day %></td>
+    17:         <td><%= link_to 'Show', red_day %></td>
+    18:         <td><%= link_to edit_red_day_path, class: "btn btn-info" do %>
+    19:             <i class="fa fa-edit"></i> Dashboard
+    20:         <% end %>
+    21:         </td>
+  
+app/views/red_days/index.html.erb:18:in `block in _app_views_red_days_index_html_erb___8839209293343691_70324335133140'
+app/views/red_days/index.html.erb:14:in `_app_views_red_days_index_html_erb___8839209293343691_70324335133140'
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:10:54 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.3ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 49ms (Views: 47.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:11:03 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 56ms (Views: 53.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:11:10 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 50ms (Views: 48.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:11:57 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 48ms (Views: 46.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:12:43 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 47ms (Views: 45.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:12:49 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 53ms (Views: 51.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:13:37 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 48ms (Views: 46.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:13:48 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:14:17 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 49ms (Views: 47.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:16:44 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 44ms (Views: 42.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:17:23 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 48ms (Views: 45.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:17:37 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 48ms (Views: 46.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:17:38 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 68ms (Views: 65.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:18:00 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.1ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 48ms (Views: 46.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:19:10 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 2487ms (Views: 2485.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:19:13 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 45ms (Views: 41.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:20:13 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 2133ms (Views: 2131.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:26:24 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.4ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 74ms (Views: 72.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-21 11:26:26 -0300
+Processing by RedDaysController#index as HTML
+  Rendering red_days/index.html.erb within layouts/application
+  [1m[36mRedDay Load (0.2ms)[0m  [1m[34mSELECT "red_days".* FROM "red_days"[0m
+  Rendered red_days/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 40ms (Views: 39.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/red_days/new" for 127.0.0.1 at 2018-04-21 11:26:28 -0300
+Processing by RedDaysController#new as HTML
+  Rendering red_days/new.html.erb within layouts/application
+  Rendered red_days/_form.html.erb (36.8ms)
+  Rendered red_days/new.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 77ms (Views: 76.0ms | ActiveRecord: 0.0ms)
+
+

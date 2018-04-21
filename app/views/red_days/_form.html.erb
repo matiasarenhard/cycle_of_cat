@@ -1,0 +1,22 @@
+<%= form_with(model: red_day, local: true) do |form| %>
+  <% if red_day.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(red_day.errors.count, "error") %> prohibited this red_day from being saved:</h2>
+
+      <ul>
+      <% red_day.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :good_day %>
+    <%= form.date_select :good_day, id: :red_day_good_day %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
